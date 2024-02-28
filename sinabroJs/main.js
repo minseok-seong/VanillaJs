@@ -50,3 +50,21 @@
 // document.querySelector(".name").addEventListener("keyUp", (e) => {
 //   console.log(e);
 // }); //어떤키가 눌렸는데 알수있다 사용예시는 단축키를 이용할때 사용가능하다 간단하게 body아래에 리스너를 만들어서 단축키가 눌렸을때 어떤 액션을 한다
+
+document.querySelector("#app").innerHTML = `
+<input />
+<button>click</button>`;
+
+document.querySelector("button").addEventListener("click", () => {
+  const currentValue = document.querySelector("input").value;
+  document.querySelector("input").value = currentValue + "*";
+});
+
+// let count = 0;
+// setInterval(() => {
+//   count += 1;
+//   document.querySelector("#app").innerHTML = `
+//   <input />
+// <button>click</button>
+// <p>count : ${count}</p>`;
+// }, 5000); //입력하는데 만약 시간이 되면 입력이 없어짐 왜냐하면 엘리먼트가 새로 만들어져서 스테이트가 없어짐 리액트는 이걸 카운트 부분만 업데이트 해준다
