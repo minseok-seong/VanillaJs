@@ -1,13 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <div id="app">
+      <div class="nav">
+        <h1 class="text-4xl">Shop App</h1>
+        <span>cart</span>
+      </div>
+
+      <div class="products"></div>
+      <div class="cart"></div>
+    </div>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

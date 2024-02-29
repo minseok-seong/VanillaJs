@@ -1,24 +1,40 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import test from "./data.json?raw";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+async function getProducts() {
+  if (process.env.NODE_ENV === "development") {
+    console.log("개발모드");
+    return JSON.parse(test);
+  } else {
+    const response = await fetch(
+      "https://learnwitheunjae.dev/api/sinabro-js/ecommerce"
+    );
+    return response.json();
+  }
+}
+
+async function main() {
+  const products = await getProducts();
+  console.log(products);
+  document.querySelector(".products").innerHTML = products
+    .map(
+      (product) =>
+        `
+    <div class="product">
+        <img src="${product.images[0]}" />
+        <p>${product.name}</p>
+        <div class="desc">
+        <span>'가격  ${product.regularPrice}'</span>
+        <div>
+        <button type="button" class="plus">+</button>
+        <span class="num">0</span>
+        <button type="button" class="minus">-</button>
+        <span class="num">0</span>
+        </div>
+       
+        </div>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+    `
+    )
+    .join("");
+}
+main();
