@@ -14,6 +14,7 @@ async function getProducts() {
 
 async function main() {
   const products = await getProducts();
+
   console.log(products);
   document.querySelector(".products").innerHTML = products
     .map(
@@ -21,17 +22,14 @@ async function main() {
         `
     <div class="product">
         <img src="${product.images[0]}" />
-        <p>${product.name}</p>
-        <div class="desc">
-        <span>'가격  ${product.regularPrice}'</span>
-        <div>
-        <button type="button" class="plus">+</button>
-        <span class="num">0</span>
-        <button type="button" class="minus">-</button>
-        <span class="num">0</span>
-        </div>
+        <p class="text-blue-300">${product.name}</p>
+        <span class="text-blue-300">'가격  ${product.regularPrice}'</span>
+        <button type="button" class="bg-green-300 ">+</button>
+      
+        <button type="button" class="bg-green-300 py-10 px-30 rounded-full hover:bg-green-400 text-green-800">-</button>
+     
        
-        </div>
+     
     </div>
     `
     )
