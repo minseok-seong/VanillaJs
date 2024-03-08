@@ -1,0 +1,13 @@
+커먼js vs  es모듈
+
+require()
+module.exports={}
+
+import , export default , export named
+
+es모듈 사용하려면 패키지.제이슨에 type=module  
+
+타입도 미리 선언해놓고 배포가능하다 
+그럼 사용할때 타입을 알려준다 매개변수값이 뭐가 들어가야하는지
+
+모노레포 : 한 레포지토리 아래에 여러 프로젝트를 둔다
